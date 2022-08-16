@@ -31,7 +31,7 @@ order by start_date desc limit 10;
 
 select *
 from analysis_bdl.covid_offerings
-where offering_id = '    1879955000'
+where offering_id = '1879955000'
 
 
 
@@ -113,14 +113,3 @@ and operation = "Valida Promocion"
 and event_hour>=2022070800 and event_hour<2022070823
 ORDER BY event_hour DESC;
 
-
--- ************************
-SELECT  msisdn,delta_radius , total_usage_mb, distance_home_tf, bs_enodeb, bs_cell_id, tf_enodeb, tf_cell_id, bs_coef_dist, bs_latitude, bs_longitude,home_latitude , home_longitude , tf_latitude, tf_longitude,
-concat('Usuario con radio de: ',cast(bs_coef_dist as string), ' KM ', ' suspendido en delta de: ',cast(delta_radius as string),' KM ' ,' Sitio que lo suspende: ',cast(tf_enodeb as string) ,' celda : ',cast(tf_cell_id as string),' BS asignado: ',cast(bs_enodeb as string) ,' celda : ',cast(bs_cell_id as string)  ) as Comentario,last_event_hour
-FROM service.mobility_end_users
-where  event_month BETWEEN 202207 AND 202208
-and last_event_hour BETWEEN 2022070100 and 2022082000
-and  msisdn in (525612336183  )
---and imsi in (334140004651203)
---where tf_enodeb in ( 100758)
-ORDER BY last_event_hour desc;
