@@ -1,4 +1,4 @@
--- *** consulta información de líneas como fecha activación, best-server, coordenadas de activación
+--****** BILLING ********** --
 
 SELECT *
 FROM billing.billing_location_bs
