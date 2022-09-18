@@ -56,3 +56,19 @@ GROUP BY 1,
          --15,
          --16
 ORDER BY load_processing_timestamp DESC;
+
+
+------------ Datos --------------
+
+SELECT calling_party_imsi, calling_party_number, cust_local_start_date,
+cast(rate_usage AS REAL)/1024/1024 AS
+Consumo_MB, mcc_tai, mnc_tai,
+calling_roam_info, enodeb, cell_id
+FROM bss.cbs_cdrs_data WHERE event_hour
+BETWEEN 2022080200 and 2022083023
+--WHERE event_hour >= 2020110100
+AND calling_party_imsi IN ( 334140121183436 )
+--and enodeb in (80252)
+--and calling_party_number in ()
+--AND be_id = 121 ORDER BY event_hour DESC;
+ORDER BY event_hour DESC
