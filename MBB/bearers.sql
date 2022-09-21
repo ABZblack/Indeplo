@@ -9,6 +9,6 @@ cast(calling_party_imsi as string) as IMSI,
 cast(calling_party_number as string) as DN, event_hour, cast(imei as string) as IMEI
 FROM sgw.sgw_cdrs
 WHERE
-calling_party_imsi IN  (334140127397627) and  event_hour BETWEEN 2022091800 AND 2022092023
+calling_party_imsi = ${IMSI} and  event_hour BETWEEN ${Fecha_inicio} AND ${Fecha_fin}
 GROUP BY 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13
 ORDER BY event_hour DESC;
