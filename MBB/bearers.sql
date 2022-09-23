@@ -1,4 +1,4 @@
---*************Berers*****************---
+--*************Bearers*****************---
 -- sesiones de datos y IMS
 
 SELECT enodeb, cell_id, main_node, origin_host, pdp_address, called_station_id, 
