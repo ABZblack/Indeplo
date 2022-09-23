@@ -2,7 +2,7 @@
 
 Select *
 From service.user_state a
-Where a.msisdn = 5623257368
+Where a.msisdn = ${DN10}
 ORDER BY a.start_timestamp desc
 
 
