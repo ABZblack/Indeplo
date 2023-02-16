@@ -7,5 +7,5 @@ WHERE
 billing_month = ${mes}
 and event_hour BETWEEN ${Fecha_Inicio} and ${Fecha_Fin}
 and be_id = ${BE_ID}
-and calling_party_number = ${DN}
+and calling_party_number = ${DN12} --DN a 12 digitos
 ORDER BY event_hour DESC
