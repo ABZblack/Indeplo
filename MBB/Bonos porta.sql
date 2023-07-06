@@ -35,3 +35,18 @@ ORDER BY fecha_fin_vigencia_promocion DESC
 ;
 
 -->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+-- CATALOGO PROMOCION
+-- Catalago en bruto, crudo
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+SELECT *
+FROM service.catalogo_promociones
+WHERE be_id = 142
+and offer_id_adquirido = '1809931001'
+and evento = 'PORT-IN'
+--and evento = 'COMPRA'
+;
+
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
