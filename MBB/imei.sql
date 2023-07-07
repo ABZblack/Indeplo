@@ -28,6 +28,6 @@ end as E_SIM
 
 from service.device_map_integrated
 
-WHERE tac like substr('${IMEI}%',1, 8)
+WHERE tac like substr('${IMEI}',1, 8)
 ;
 
