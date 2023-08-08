@@ -1,6 +1,7 @@
 -- =========================================================== QUERY PARA SUSPENSION MOVILIDAD =============================================
 
 
+
 SELECT DISTINCT last_event_hour, msisdn, delta_radius , total_usage_mb, distance_home_tf, bs_enodeb, bs_cell_id, tf_enodeb, tf_cell_id, bs_coef_dist, bs_latitude, bs_longitude, home_latitude , home_longitude ,
 tf_latitude, tf_longitude,
 concat
