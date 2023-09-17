@@ -1,27 +1,22 @@
-SELECT cust_local_start_date,
-enodeb,
-cust_local_end_date,
-service_type,
-calling_party_number,
-result_code,
-result_reason,
-cast(rate_usage as real)/1024/1024 as consumo_MB,
-calling_roam_info,
-calling_home_country_code,
-calling_roam_country_code,
-calling_party_imsi,
-imei,
-access_network_address,
-apn,
-rating_group,
-main_offering_id,
-free_unit_id_1,
-acct_balance_id_1,
-free_unit_type_1
-FROM bss.cbs_cdrs_data
---WHERE calling_party_imsi = 	334140143513383
-where calling_party_number = 527716302574
-and be_id= 251
-and billing_month = 202306
-and event_hour BETWEEN 2023061900 and 2023112223
-order by cust_local_start_date desc;
+SELECT enodeb,
+       cell_id,
+       called_station_id,
+       round(sum(accounting_input_octets + accounting_output_octets)/1024/1024,2) AS Trafico,
+       calling_party_imsi,
+       calling_party_number,
+       event_timestamp,
+       event_hour,
+       imei,
+       mcc_tai,
+       mnc_tai,
+       qos_class_identifier,
+       qos_class_identifier_value
+FROM sgw.sgw_cdrs
+WHERE
+calling_party_imsi IN (334140143623531)  --IMSI
+--calling_party_number IN (528137147550) -- DN 12 digitos
+and event_month = 202309
+AND event_hour BETWEEN 2023091200 and 2023091323
+
+GROUP BY 1,2,3,5,6,7,8,9,10,11,12,13
+ORDER BY event_hour DESC;
