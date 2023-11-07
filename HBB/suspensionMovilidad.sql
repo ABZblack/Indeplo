@@ -19,15 +19,15 @@ WITH suspen AS (
         home_latitude,
         home_longitude,
         tf_latitude,
-        tf_longitude,
-        CONCAT(
+        tf_longitude
+        /*CONCAT(
             'Usuario con radio de: ', CAST(bs_coef_dist AS STRING),
             ' KM ', ' suspendido en delta de: ', CAST(delta_radius AS STRING),
             ' KM ', ' Sitio que lo suspende: ', CAST(tf_enodeb AS STRING),
             ' celda : ', CAST(tf_cell_id AS STRING),
             ' BS asignado: ', CAST(bs_enodeb AS STRING),
             ' celda : ', CAST(bs_cell_id AS STRING)
-        ) AS comentario
+        ) AS comentario*/
     FROM
         service.mobility_end_users
     WHERE
@@ -64,7 +64,7 @@ SELECT
     s.home_longitude,
     s.tf_latitude,
     s.tf_longitude,
-    s.comentario,
+    --s.comentario,
     bs.site_id AS bs_siteID,
     tf.site_id AS tf_siteID,
     tf.tx_output AS tf_tx_output,
