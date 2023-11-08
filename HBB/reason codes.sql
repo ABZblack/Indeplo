@@ -1,21 +1,26 @@
---Reason codes
+--Reason code
 
-Select *
-From service.user_state a
-Where a.msisdn = ${DN10}
-ORDER BY a.start_timestamp desc
+select  be_id,
+        msisdn,
+        imsi,
+        status
+        operation_start,
+        operation_end,
+        start_timestamp,
+        end_timestamp,
+        CASE 
+            when reason_code = 0 then 'Notificado por cliente'
+            when reason_code = 1 then 'Notificado por cliente'
+            when reason_code = 2 then 'suspensión por movilidad'
+            when reason_code = 3 then 'suspensión por IMEI Lock'
+            when reason_code = 4 then 'Barring por No Banda 28'
+            when reason_code = 5 then 'Unbarring por No banda 28'
+            else '0'
+        end as 'Reason',
+        sub_rc,
+        transaction_id
+From service.user_state
 
-
---************        Reason codes       ************
---0: Notificado por cliente
---1: Notificado por cliente
---2: suspensión por movilidad
---3: suspensión por IMEI Lock
---4: Barring por No Banda 28
---5: Unbarring por No banda 28
---************       Sub-Reason codes       ************
---10: Barring por Banda28 No Compatible
---11: Unbarring por Banda28 compatible
---12: Barring por IMEI No Permitido
---13: UnBarring por IMEI Permitido
-
+    Where msisdn = 5631888980
+    
+ORDER BY start_timestamp desc
