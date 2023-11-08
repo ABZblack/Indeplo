@@ -3,7 +3,7 @@
 select  be_id,
         msisdn,
         imsi,
-        status
+        status,
         operation_start,
         operation_end,
         start_timestamp,
