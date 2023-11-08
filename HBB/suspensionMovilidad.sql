@@ -33,6 +33,7 @@ WITH suspen AS (
     WHERE
         event_month >= ${event_month}
         AND msisdn IN (${DN_12digitos})
+        --AND imsi in (${IMSI})
 ),
 
 cell AS (
@@ -73,6 +74,7 @@ SELECT
 FROM
     suspen AS s
 LEFT JOIN
-    cell AS bs ON s.bs_latitude = bs.site_latitude
+    cell AS bs ON s.bs_latitude = bs.site_latitude and s.bs_enodeb = bs.enodeb
 LEFT JOIN
-    cell AS tf ON s.tf_latitude = tf.site_latitude;
+    cell AS tf ON s.tf_latitude = tf.site_latitude and s.tf_enodeb = tf.enodeb
+ORDER BY s.last_event_hour DESC
