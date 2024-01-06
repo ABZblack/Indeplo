@@ -1,7 +1,9 @@
 WITH catalogo
 as (
     
-    SELECT nombre_promocion, descripcion_promocion, id_promocion, be_id, recurrencia, evento, offer_id_adquirido, offer_id_promocion, fecha_inicio_vigencia_promocion,fecha_fin_vigencia_promocion,
+    SELECT nombre_promocion, descripcion_promocion, id_promocion, be_id, recurrencia, evento, offer_id_adquirido, offer_id_promocion, 
+    to_timestamp(cast(fecha_inicio_vigencia_promocion as STRING),'yyyyMMddHHmmss') fecha_inicio_vigencia_promocion,
+    to_timestamp(cast(fecha_fin_vigencia_promocion as STRING),'yyyyMMddHHmmss') fecha_fin_vigencia_promocion,
     load_processing_timestamp, compra_y_elimina_oferta_actual
     FROM service.catalogo_promociones
 ),
@@ -15,7 +17,8 @@ as(
 )
 
 
-SELECT  nombre_promocion, 
+SELECT  DISTINCT
+        nombre_promocion, 
         descripcion_promocion, 
         id_promocion, 
         catalogo.be_id, 
