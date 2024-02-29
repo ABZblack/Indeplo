@@ -44,7 +44,8 @@ consulta_imei as
     where imei is not null
 )
 
-SELECT  c.imei, 
+SELECT  distinct,
+        c.imei, 
         i.homologado,
         i.volteCapable,
         i.Band_28, 
