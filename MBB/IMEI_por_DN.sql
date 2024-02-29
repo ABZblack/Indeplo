@@ -42,8 +42,6 @@ consulta_imei as
         ) as a
         
     where imei is not null
-    order by event_hour desc
-    limit 1
 )
 
 SELECT  c.imei, 
