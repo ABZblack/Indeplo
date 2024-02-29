@@ -38,7 +38,7 @@ consulta_imei as
             FROM pgw.pgw_cdrs
             where calling_party_number in (${DN_12digitos})
             and event_month >= CAST(from_timestamp(date_sub(now(),3),'yyyyMM') AS BIGINT)
-            AND event_hour >= CAST(from_timestamp(date_sub(now(),2),'yyyyMMddHH') AS BIGINT)
+            AND event_hour >= CAST(from_timestamp(date_sub(now(),3),'yyyyMMddHH') AS BIGINT)
         ) as a
         
     where imei is not null
