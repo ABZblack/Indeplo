@@ -38,14 +38,21 @@ consulta_imei as
             FROM pgw.pgw_cdrs
             where calling_party_number in (${DN_12digitos})
             and event_month >= CAST(from_timestamp(date_sub(now(),3),'yyyyMM') AS BIGINT)
-            AND event_hour >= CAST(from_timestamp(date_sub(now(),3),'yyyyMMddHH') AS BIGINT)
+            AND event_hour >= CAST(from_timestamp(date_sub(now(),2),'yyyyMMddHH') AS BIGINT)
+            UNION ALL
+            SELECT imei, event_hour
+            FROM sgw.sgw_cdrs
+            where calling_party_number in (${DN_12digitos})
+            and event_month >= CAST(from_timestamp(date_sub(now(),3),'yyyyMM') AS BIGINT)
+            AND event_hour >= CAST(from_timestamp(date_sub(now(),2),'yyyyMMddHH') AS BIGINT)
         ) as a
         
     where imei is not null
 )
 
-SELECT  distinct,
-        c.imei, 
+SELECT distinct
+        c.event_hour,
+        c.imei,
         i.homologado,
         i.volteCapable,
         i.Band_28, 
@@ -60,3 +67,4 @@ SELECT  distinct,
 from consulta_imei as c
 left join imeis as i
 ON c.tac=i.tac
+order by c.event_hour desc
