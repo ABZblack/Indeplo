@@ -16,7 +16,8 @@ SELECT  key,
         tx_output,
         latitude,
         longitude,
-        vendor
+        vendor,
+        hora_pico
         
         
 FROM service.oss_sectors_busy_hour
