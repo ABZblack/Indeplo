@@ -13,11 +13,11 @@ SELECT  key,
         sector,
         site_name,
         volume_dl,
+        ue_dl_throughput,
         tx_output,
         latitude,
         longitude,
-        vendor,
-        hora_pico
+        vendor
         
         
 FROM service.oss_sectors_busy_hour
